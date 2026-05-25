@@ -41,38 +41,12 @@ This framework showcases my engineering expertise as a **Senior Python & AI Engi
 
 ## 📐 System Architecture Blueprint
 
-The diagram below represents the modular execution flow designed to maintain zero state-leakage and strict order of operations:
-
-
-```
-
-┌────────────────────────────────────────────────────────┐
-│                    Market Data Ingestion               │
-└───────────────────────────┬────────────────────────────┘
-│ (Async Stream)
-▼
-┌────────────────────────────────────────────────────────┐
-│      AI & Fundamental Analysis Layer (Async/Celery)     │
-│   - Real-time News Ingestion    - LLM Sentiment Filter │
-└───────────────────────────┬────────────────────────────┘
-│
-▼
-┌────────────────────────────────────────────────────────┐
-│          Core Strategy Engine (Pro BTB / SP2L)         │
-│   - Price Action Identification  - Technical Validation│
-└───────────────────────────┬────────────────────────────┘
-│
-▼
-┌────────────────────────────────────────────────────────┐
-│           Risk Manager (Strict Defensive Guard)        │
-│   - ATR Position Sizing         - Max Drawdown Check   │
-└───────────────────────────┬────────────────────────────┘
-│ (Passed Risk Check)
-▼
-┌────────────────────────────────────────────────────────┐
-│                Broker / API Trade Executor             │
-└────────────────────────────────────────────────────────┘
-
+```mermaid
+flowchart TD
+    A[Market Data Ingestion] --> B[AI & Fundamental Analysis Layer]
+    B --> C[Core Strategy Engine<br>Pro BTB + SP2L]
+    C --> D[Risk Manager<br>ATR Sizing + Drawdown Guard]
+    D --> E[Broker Trade Executor]
 ```
 
 ---
@@ -83,8 +57,3 @@ I am a **Senior Python / AI Engineer** who thrives on efficiency, clean architec
 
 * **Specialties:** Enterprise Algorithmic Trading Systems, Scalable Machine Learning Pipelines, Backend Architecture Design, and High-Throughput Async Systems.
 * **GitHub Profile:** [@saeidsaadatigero](https://github.com/saeidsaadatigero)
-
----
-
-## 📄 License & Disclaimer
-This project is shared purely for professional portfolio evaluation. Algorithmic trading involves significant financial exposure. The underlying code remains proprietary intellectual property.
