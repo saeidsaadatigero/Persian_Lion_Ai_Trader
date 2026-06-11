@@ -1,59 +1,84 @@
 <img width="2752" height="1536" alt="logo" src="https://github.com/user-attachments/assets/874b17b6-1d1a-418d-af02-6efc57bad240" />
 
-A production-grade, highly automated algorithmic trading framework built for institutional FX execution, specifically optimized for **XAUUSD (Gold)**. 
+# 🦁 Persian Lion AI Trader — Agentic Trading System
 
-> **Note on Intellectual Property:** This repository serves as a public architectural showcase and technical portfolio landing page. The core execution engine, proprietary trading algorithms, and internal enterprise modules reside in a secured, private repository. 
+A production-grade, **Hierarchical Multi-Agent Algorithmic Trading System** featuring a custom lightweight agent architecture with LLM-powered orchestration. Built for institutional-grade FX & Index execution, optimized for **XAUUSD (Gold)** and **DowJones30 (US30)**.
 
----
-
-## 🚀 Technical Core Pillars & Capabilities
-
-This framework showcases my engineering expertise as a **Senior Python & AI Engineer**, specializing in clean architecture, high-throughput financial systems, and deterministic automation.
-
-### 1. Advanced Architecture & Software Engineering
-* **Service Layer Pattern:** Strict decoupling of business logic, risk calculation, and trade execution. No raw processing inside the integration layers.
-* **Robust Type-Hinting & Strict OOP:** Built with maintainability and enterprise scale in mind, utilizing abstract base classes, protocol enforcement, and complete type safety.
-* **Comprehensive Multi-Model Logging:** Async-ready, single/multi-model structured logging architecture that logs system states, broker signals, and API responses directly into a persistence layer for real-time compliance auditing.
-
-### 2. Algorithmic Trading Mechanics (Domain Expertise)
-* **Mechanical Price Action Engines:** Automated implementation of advanced structural setups including **Pro BTB** (Professional Back to Breakeven) and **SP2L** (Spike 2Leg).
-* **Institutional Risk Guardrails:** The core engine features rigorous, non-negotiable defensive wrappers:
-  * Dynamic position sizing based on real-time volatility ($ATR$).
-  * Hardcoded daily maximum drawdown limits and max-loss-per-trade caps.
-  * Adaptive leverage control and exposure mitigations during high-impact market regimes.
-
-### 3. Artificial Intelligence & Cognitive Filtering
-* **LLM Sentiment Fusion:** Integrates a multi-agent generative AI layer utilizing structured prompt streaming to evaluate live macroeconomic shifts and fundamental news.
-* **Advanced Context Gathering:** Acts as a secondary confirmation filter. The system pipes current market structural states alongside real-time news to validate high-probability setups, drastically reducing false breakouts.
+> **Note on Intellectual Property:** This repository serves as a public architectural portfolio. The core execution engine resides in a secured, private repository.
 
 ---
 
-## 🛠️ Production Tech Stack
+## 🚀 Key Technical Capabilities
 
-| Component | Technology | Rationale |
-| :--- | :--- | :--- |
-| **Language & Core** | Python 3.11+ / Asyncio | High-performance asynchronous execution for live market feeds. |
-| **AI Integration** | OpenAI API / Custom LLM Wrappers | Structured JSON outputs for automated qualitative evaluation. |
-| **Data & Ledger** | SQLite / PostgreSQL | Thread-safe transaction journaling and strict auditing. |
-| **Configuration** | Python-Decouple / Environ | Zero hardcoded secrets; strict adherence to 12-Factor App methodology. |
+### 1. Custom Multi-Agent Architecture (No Heavy Frameworks)
+Designed and implemented a **Hierarchical Agent System** from scratch — no LangGraph, no CrewAI, no AutoGen. Four specialist agents report to a central LLM-powered Orchestrator with structured JSON decision-making.
+
+```
+STRATEGIST (LLM) ←→ [THE EYE] [FUNDAMENTALIST] [TREASURER] → EXECUTIONER
+```
+
+- **Agent Communication**: Structured report passing (not chat-based)
+- **Latency**: Sub-millisecond agent coordination (pure Python, no RPC overhead)
+- **Fallback**: Automatic rule-based decision engine when LLM is unavailable
+
+### 2. LLM Integration (DeepSeek)
+- Custom **Structured Prompt Engineering** with JSON output enforcement
+- System prompt derived from a 50+ hour trading mentorship **Strategy Bible (JSON)**
+- Context Analysis every 30 minutes + Daily Performance Report
+- **Cost**: ~$0.20/month for continuous operation
+
+### 3. Institutional Risk Management
+- Dynamic lot sizing: `Balance × Risk% / (StopLoss × TickValue)`
+- Hard daily drawdown limits with mandatory cooldown
+- **Anti-Correlation Rule**: Automatic duplicate direction blocking
+- **Kill Zone Override**: Volatility-adjusted risk during market opens
+
+### 4. Pure Price Action Engine (6 Sub-Strategies)
+- MTR (Major Trend Reversal) | BLSH Range | Flag Breakout | Spike Momentum | SP2L | Pro BTB
+- Market Cycle Detection: SPIKE → CHANNEL → TRADING RANGE
+- Signal Bar + Key Bar confirmation system
 
 ---
 
-## 📐 System Architecture Blueprint
+## 🛠️ Tech Stack
+
+| Component | Technology |
+|---|---|
+| **Language** | Python 3.11+ |
+| **AI/LLM** | DeepSeek API, OpenAI API |
+| **Trading Platform** | MetaTrader 5 (Python bindings) |
+| **Data** | SQLite, Pandas, TA-Lib |
+| **Deployment** | Windows VPS, Git, CI/CD |
+| **Architecture** | Custom Lightweight Multi-Agent System |
+
+---
+
+## 📊 System Architecture
 
 ```mermaid
 flowchart TD
-    A[Market Data Ingestion] --> B[AI & Fundamental Analysis Layer]
-    B --> C[Core Strategy Engine<br>Pro BTB + SP2L]
-    C --> D[Risk Manager<br>ATR Sizing + Drawdown Guard]
-    D --> E[Broker Trade Executor]
+    BIBLE[Strategy Bible JSON] --> STRATEGIST
+    STRATEGIST[Strategist Agent LLM] --> EYE
+    STRATEGIST --> FUNDAMENTALIST
+    STRATEGIST --> TREASURER
+    EYE[The Eye - Technical] --> REPORT1[Structured Report]
+    FUNDAMENTALIST[The Fundamentalist - News] --> REPORT2[Structured Report]
+    TREASURER[The Treasurer - Risk] --> REPORT3[Structured Report]
+    REPORT1 --> STRATEGIST
+    REPORT2 --> STRATEGIST
+    REPORT3 --> STRATEGIST
+    STRATEGIST --> DECISION{EXECUTE / HOLD / AVOID}
+    DECISION --> EXECUTIONER[Executioner - MT5 Orders]
 ```
 
 ---
 
 ## 🧑‍💻 About the Engineer
 
-I am a **Senior Python / AI Engineer** who thrives on efficiency, clean architecture, and bulletproof automation. My default development state is **Production-Ready**, ensuring that every pipeline I deploy contains optimized code, clear separation of concerns, enterprise DevOps readiness, and absolute stability under heavy operational loads.
+I am a **Senior Python & AI Engineer** with deep expertise in building **Agentic AI Systems** for financial markets. I design and implement custom multi-agent architectures, LLM orchestration layers, and production-grade trading infrastructure. My core strengths:
 
-* **Specialties:** Enterprise Algorithmic Trading Systems, Scalable Machine Learning Pipelines, Backend Architecture Design, and High-Throughput Async Systems.
-* **GitHub Profile:** [@saeidsaadatigero](https://github.com/saeidsaadatigero)
+- **AI Engineering**: Custom agent architectures, structured prompt engineering, LLM integration into real-time systems
+- **Financial Domain**: Price Action trading, risk management, MetaTrader 5 automation
+- **Software Engineering**: Clean architecture, strict OOP, type-safe Python, production DevOps
+
+**GitHub:** [@saeidsaadatigero](https://github.com/saeidsaadatigero)
